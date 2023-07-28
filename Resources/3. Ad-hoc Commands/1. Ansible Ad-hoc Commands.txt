@@ -1,0 +1,11 @@
+Find uptime on all managed nodes which are in inventory file :
+--------------------------------------------------------------
+ansible all -m ansible.builtin.command -a 'uptime'
+
+Install nginx package on all managed nodes which are in inventory file :
+------------------------------------------------------------------------
+ansible all -m ansible.builtin.package -a 'name=nginx state=present' -b
+
+Execut Ansible-Playbook :
+-------------------------
+ansible-playbook  demo.yml

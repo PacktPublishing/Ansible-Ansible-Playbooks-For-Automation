@@ -1,0 +1,32 @@
+---
+- name: Play to install packages on different os families 
+  hosts: dev 
+  gather_facts: true 
+  # vars:
+  #   mypkgs:
+  #     RedHat:
+  #       - nginx 
+  #       - vim
+  #       - wget  
+  #       - httpd      
+  #     Debian:
+  #       - nginx 
+  #       - vim
+  #       - wget 
+  #       - apache2    
+  become: yes
+  tasks: 
+    - name: Installing packages on RHEL Family 
+      ansible.builtin.yum:
+        name: "{{mypkgs.RedHat}}"
+        state: present
+        update_cache: true
+      #become: yes
+      when: ansible_facts.os_family == "RedHat" 
+    - name: Installing packages on Debian Family 
+      ansible.builtin.apt:
+        name: "{{mypkgs.Debian}}"        
+        state: present
+        update_cache: true 
+      #become: yes     
+      when: ansible_facts.os_family == "Debian"       

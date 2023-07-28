@@ -1,0 +1,35 @@
+---
+- name: Setting JAVA_HOME 
+  hosts: dev 
+  gather_facts: false
+  vars: 
+    reqLoc: /opt 
+    targzFileName: "{{(url|split('/'))[-1]}}" 
+    reqJavaVer: "{{((targzFileName|split('_'))[0]|split('-'))[-1]}}"
+    javaHomePath: "{{reqLoc}}/jdk-{{reqJavaVer}}"  
+    targzFileNamePath: "{{reqLoc}}/{{targzFileName}}" 
+  become: yes
+  tasks:
+    - name: Downloading required tar.gz file 
+      ansible.builtin.get_url:
+        url: "{{url}}"
+        dest: "{{targzFileNamePath}}"
+    - name: Extracting tar.gz file 
+      ansible.builtin.unarchive:
+        src: "{{targzFileNamePath}}"
+        dest: "{{reqLoc}}"
+        remote_src: true
+    - name: Removing old JAVA_HOME 
+      ansible.builtin.lineinfile:
+        path: /etc/environment 
+        regex: "export JAVA_HOME"
+        state: absent 
+    - name: Setting JAVA_HOME ENV Variable 
+      ansible.builtin.lineinfile:
+        path: /etc/environment 
+        line: "export JAVA_HOME={{javaHomePath}}"
+        state: present
+    - name: Removing tar.gz file 
+      ansible.builtin.file: 
+        path: "{{targzFileNamePath}}"
+        state: absent 

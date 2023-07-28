@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  #This logic is to read only one variable value
+  # vars_prompt:
+  #   name: x
+  #   prompt: Enter your x value
+  vars: 
+    a: 4
+  #This logic is to read multiple variable values 
+  vars_prompt:
+    - name: x
+      prompt: Enter x 
+    - name: y
+      prompt: Enter y
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+        msg:
+          - "The value of x is {{x}}"
+          - "The value of y is {{y}}"
+          - "The value of a is {{a}}"

@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars:
+    x: 8
+    y: 7
+  gather_facts: false
+  tasks:
+   - ansible.builtin.debug:
+       #msg: "x : {{x}} y : {{y}}"
+      #  msg:
+      #    - "x : {{x}}"
+      #    - "y : {{y}}"
+       #var: x 
+       var: x,y

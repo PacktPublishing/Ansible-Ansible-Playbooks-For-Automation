@@ -1,0 +1,15 @@
+---
+- name: Play with become options
+  hosts: localhost
+  gather_facts: false
+  become: yes
+  # become_user: root
+  # become_method: sudo  
+  tasks:
+    - name: Install nginx package
+      ansible.builtin.yum:
+        name:  nginx 
+        state: present
+      # become: yes
+      # become_user: root
+      # become_method: sudo

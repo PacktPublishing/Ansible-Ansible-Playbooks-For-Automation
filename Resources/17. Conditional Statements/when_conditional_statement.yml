@@ -1,0 +1,12 @@
+---
+- name: Simple play with when conditional statement
+  hosts: localhost
+  vars:
+    myFile: /home/ansadmin/apbooks/pointsToRemember.yml
+  gather_facts: false 
+  tasks:
+    - name: Displaying file name using debug module
+      ansible.builtin.debug:
+        msg:
+          - "The file is: {{myFile}}"
+      when: myFile is exists

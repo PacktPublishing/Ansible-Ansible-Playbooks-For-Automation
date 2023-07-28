@@ -1,0 +1,9 @@
+ Create User 
+	Command:
+		(note: i suggest to use username in small letters)
+ 		useradd -s /bin/bash -m -d /home/VRTech VRTech
+ Provide Root Privilages to VRTech user
+	Edit /etc/sudoers file and add the below line
+		VRTech ALL=(ALL)      NOPASSWD: ALL
+
+

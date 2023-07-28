@@ -1,0 +1,16 @@
+---
+- name: Provisioning EC2 Instance
+  hosts: localhost
+  gather_facts: false 
+  vars_files: aws_keys.yml
+  tasks:
+    - name: Launching EC2 Instance 
+      amazon.aws.ec2_instance:
+        aws_access_key: "{{aws_access_key}}"
+        aws_secret_key: "{{aws_secret_key}}"
+        instance_type: t2.micro
+        image_id: ami-022e1a32d3f742bd8
+        region: us-east-1
+        key_name: automation
+        security_group: sg-0f8059cdb621642e3
+        exact_count: 1

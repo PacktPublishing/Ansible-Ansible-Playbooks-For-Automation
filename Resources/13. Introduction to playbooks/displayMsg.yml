@@ -1,0 +1,12 @@
+---
+  - name: This is First Play
+    hosts: dev
+    gather_facts: false
+    tasks:
+      - name: This is first task
+        ansible.builtin.debug:
+          msg: "Welcome to Ansible Playbooks"
+      - name: This is second task
+        ansible.builtin.debug:
+          msg: "Now we are good at basics of Playbooks"
+      

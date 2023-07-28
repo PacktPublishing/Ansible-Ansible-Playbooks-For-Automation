@@ -1,0 +1,15 @@
+ Create User 
+	Command:
+ 		useradd -s /bin/bash -m -d /home/ansadmin ansadmin
+ Provide Root Privilages to ansadmin user
+	Edit /etc/sudoers file and add the below line
+		ansadmin  ALL=(ALL)      NOPASSWD: ALL
+
+ Generate SSH Keys: 
+	ssh-keygen
+ Permissions for 600
+	create .ssh under userhome of managed nodes
+	chmod 600 authorized_keys 
+
+Verify the connectivity from ansible-controller to managed nodes:
+	ansible all -m ansible.builtin.ping

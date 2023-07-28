@@ -1,0 +1,11 @@
+---
+- name: Play to get default facts
+  hosts: dev
+  gather_facts: true 
+  tasks:
+    - name: Display default facts 
+      ansible.builtin.debug:
+        #List All Default Facts
+        #msg: "{{ansible_facts}}"
+        #Get os family type from default facts
+        msg: "{{ansible_facts.os_family}}"

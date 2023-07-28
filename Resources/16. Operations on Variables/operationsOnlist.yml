@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  vars:
+    mylist: [5,8,3,7,4]
+    mynewlist: [ 67,89]
+    mergedlist: "{{mylist + mynewlist }}"
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+        msg:
+          - "mylist is: {{mylist}}"
+          - "no of elements : {{mylist | length}}"
+          - "min num: {{mylist | min}}"
+          - "max num: {{mylist | max}}"
+          - "first num: {{mylist[0]}}"
+          - "second num: {{mylist[1]}}"
+          - "first num: {{mylist[-5]}}"
+          - "second num: {{mylist[-4]}}" 
+          - "fist num with filter: {{mylist | first}}"
+          - "last num with filter: {{mylist | last}}"   
+          - "mergedlist is :{{mergedlist}}"    
+    - ansible.builtin.set_fact:
+        newmergedlist: "{{mylist + mynewlist }}"
+        joineddata: "{{mylist | join('-')}}"
+    - ansible.builtin.debug:
+        msg:
+          - "joined data is: {{joineddata}}"    

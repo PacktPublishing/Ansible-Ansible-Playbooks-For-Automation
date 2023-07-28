@@ -1,0 +1,14 @@
+---
+- name: Play to  get python version
+  hosts: "{{targets}}"
+  gather_facts: false 
+  tasks:
+    - name: Executing python version command with command module
+      ansible.builtin.command:  
+        cmd: 'python --version'
+      register: pythonVersion
+    - name: Displaying python version using debug module 
+      ansible.builtin.debug:
+        msg: "{{pythonVersion.stdout}}"
+        #You can also display output using var argument for your debug module as below
+        #var: pythonVersion.stdout

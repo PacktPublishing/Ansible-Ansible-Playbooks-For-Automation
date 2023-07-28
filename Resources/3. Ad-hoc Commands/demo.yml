@@ -1,0 +1,17 @@
+---
+ - name: Play to Find the uptime and to install nginx 
+   hosts: all
+   gather_facts: false
+   tasks:
+    - name: Task to find the uptime
+      ansible.builtin.command:
+        cmd: 'uptime'
+      register: uptimeInfo
+    - name: Task to install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+      become: yes
+    - name: Task to Disply the uptime 
+      ansible.builtin.debug:
+        msg: "Uptime: {{uptimeInfo.stdout}}"

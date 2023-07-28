@@ -1,0 +1,24 @@
+ansible all -m ansible.builtin.command -a 'free -mh'
+ansible all -m ansible.builtin.shell -a 'free -mh'
+ansible all -m ansible.builtin.command -a 'free -mh;date'  --> it wont give required result, as the command has ; in it, so use shell module in this case
+ansible all -m ansible.builtin.shell -a 'free -mh;date'
+
+
+
+================================>
+
+Note: Run the Given Playbook from Project dir location to intall java on Managed Nodes
+     ansible-playbook  installJava.yml
+
+We will see indetail about installing pkgs later
+---------------------------------------------------------------------------------------------
+
+Solution for finding the java -version through the ansible Ad-hoc commands using command & shell modules :
+ansible all -m ansible.builtin.command -a 'java -version'
+ansible all -m ansible.builtin.shell -a 'java -version'
+
+
+ansible all -m ansible.builtin.command -a 'java -version 2>&1 | grep "version"'  --> It wont work as its having >, & and | symbols, so use shell module to run this type of commands
+ansible all -m ansible.builtin.shell -a 'java -version | grep "version"'
+
+

@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  vars:
+    myValue: 4
+    # myList:
+    #  - 3
+    #  - 7
+    #  - 8
+    myList: [3,7,8]
+    # myDict:
+    #   myFist: 4
+    #   mySecond: 8
+    myDict: { 'myFist': 4, 'mySecond': 8 }
+  gather_facts: false
+  tasks: 
+    - ansible.builtin.debug:
+        msg: "{{myValue}}   {{myList}} {{myDict}}"

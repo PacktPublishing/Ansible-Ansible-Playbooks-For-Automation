@@ -1,0 +1,23 @@
+---
+- name: Simple Arithemtic calculator
+  hosts: localhost 
+  vars_prompt:
+    - name: a
+      prompt: Enter a value   
+    - name: b
+      prompt: Enter b value 
+  vars: 
+    addition: "{{a|int+b|int}}" 
+    subtraction: "{{a|int-b|int}}"
+    multiplication: "{{a|int*b|int}}"
+    division: "{{a|int/b|int if b|int !=0 else 'division is not possible'}}"
+  gather_facts: false
+  tasks:
+    - name: Displaying Arithemtic Results
+      ansible.builtin.debug:
+        msg:
+          - "a value is: {{a}} and b value is: {{b}}"
+          - "Addition: {{addition}}"
+          - "Subtraction: {{subtraction}}"
+          - "Multiplication: {{multiplication}}"
+          - "Division: {{division}}"

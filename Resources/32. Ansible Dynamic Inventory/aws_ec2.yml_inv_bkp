@@ -1,0 +1,12 @@
+---
+plugin: amazon.aws.aws_ec2
+aws_access_key: AKIAQD4EUQEZQPY47J54
+aws_secret_key: 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
+regions:
+  - us-east-1
+  - us-east-2
+leading_separator: False
+keyed_groups:
+  - key: tags.Env
+filters:
+  instance-state-name: running

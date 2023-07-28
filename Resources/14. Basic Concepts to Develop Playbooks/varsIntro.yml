@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars:
+    x: 2
+    y: 4.6
+    myName: VRTechnologies
+  gather_facts: false
+  tasks: 
+    - ansible.builtin.debug:
+        msg: "x value is: {{x}} y value is: {{y}} myName value is: {{myName}}"
+    # - ansible.builtin.debug:
+    #     msg: "{{y}}" 
+    # - ansible.builtin.debug:
+    #     msg: "{{myName}}"

@@ -1,0 +1,6 @@
+---
+- name: Installing packages on RHEL Family 
+  ansible.builtin.yum:
+    name: nginx 
+    state: present
+    update_cache: true

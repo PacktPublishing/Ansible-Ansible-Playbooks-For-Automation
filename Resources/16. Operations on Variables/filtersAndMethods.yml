@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  vars:
+    a: "ansible"
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+        msg: 
+          - "a value is : {{a}}"
+          - "a in upper: {{a|upper}}"
+          - "a in upper: {{a.upper()}}"
+          - "{{'hello'|upper}}"

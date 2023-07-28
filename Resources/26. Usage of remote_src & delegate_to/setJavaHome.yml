@@ -1,0 +1,36 @@
+---
+- name: Setting JAVA_HOME 
+  hosts: dev 
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: Downloading required tar.gz file 
+      ansible.builtin.get_url:
+        url: https://download.java.net/java/GA/jdk18.0.2/f6ad4b4450fd4d298113270ec84f30ee/9/GPL/openjdk-18.0.2_linux-x64_bin.tar.gz
+        dest: /opt/openjdk-18.0.2_linux-x64_bin.tar.gz
+      delegate_to: localhost 
+      run_once: true      
+    - name: Extracting tar.gz file 
+      ansible.builtin.unarchive:
+        src: /opt/openjdk-18.0.2_linux-x64_bin.tar.gz
+        dest: /opt 
+    - name: Setting JAVA_HOME ENV Variable 
+      ansible.builtin.lineinfile:
+        path: /etc/environment 
+        line: "export JAVA_HOME=/opt/jdk-18.0.2"
+        state: present 
+
+    # - name: Downloading required tar.gz file 
+    #   ansible.builtin.get_url:
+    #     url: https://download.java.net/java/GA/jdk18.0.2/f6ad4b4450fd4d298113270ec84f30ee/9/GPL/openjdk-18.0.2_linux-x64_bin.tar.gz
+    #     dest: /opt/openjdk-18.0.2_linux-x64_bin.tar.gz
+    # - name: Extracting tar.gz file 
+    #   ansible.builtin.unarchive:
+    #     src: /opt/openjdk-18.0.2_linux-x64_bin.tar.gz
+    #     dest: /opt 
+    #     remote_src: true
+    # - name: Setting JAVA_HOME ENV Variable 
+    #   ansible.builtin.lineinfile:
+    #     path: /etc/environment 
+    #     line: "export JAVA_HOME=/opt/jdk-18.0.2"
+    #     state: present 

@@ -1,0 +1,8 @@
+ ansible --version
+ ansible-doc -l | wc -l
+ ansible-doc -l | grep -i debug
+ ansible-galaxy collection install amazon.aws -p ./collections
+ ansible-doc  -l | grep -i aws
+ ansible-galaxy collection list 
+
+ COLLECTIONS_PATHS=./collections

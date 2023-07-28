@@ -1,0 +1,17 @@
+---
+- name: Play for loops
+  hosts: localhost
+  gather_facts: false
+  vars:
+    reqFiles:
+        - config
+        - config.default
+        - config.test      
+  tasks:
+    - name: Creating a file 
+      ansible.builtin.file:
+        path: /tmp/"{{item}}"
+        state: touch 
+      #loop:  "{{reqFiles}}"
+      with_list: "{{reqFiles}}"
+    

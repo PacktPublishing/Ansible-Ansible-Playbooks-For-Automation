@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  vars:
+    myName: "vr technoLogies"
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+        msg: 
+        - "myName: {{myName}}"
+        - "lenght of a string: {{myName | length}}"
+        - "myName in lower case: {{myName|lower}}"
+        - "myName in upper case: {{myName|upper}}"
+        - "myName in title format: {{myName|title}}"
+        - "myName first char: {{myName[0]}}"
+        - "myName last char: {{myName[-1]}}"
+        - "myName fist char with filter: {{myName|first}}"
+        - "myName last char with filter: {{myName|last}}"
+        - "myName first two chars: {{myName[0:2]}}"
+        - "myName chars from 3rd index: {{myName[3:]}}"
+        - "myName 2 chars from 3rd index: {{myName[3:5]}}"
+        - "list from myName string: {{myName|split}}"
+        - "list from myName string: {{myName|split('o')}}"

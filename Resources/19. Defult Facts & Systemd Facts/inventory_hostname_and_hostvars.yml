@@ -1,0 +1,9 @@
+---
+- name: Play to display inventory_hostname and hostvars
+  hosts: 44.204.53.94,54.91.252.96
+  gather_facts: false
+  tasks:
+    - name: Display inventory_hostname
+      ansible.builtin.debug:
+        #msg: "{{inventory_hostname}}"
+        msg: "{{hostvars[inventory_hostname].group_names}}"

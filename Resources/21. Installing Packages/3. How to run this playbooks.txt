@@ -1,0 +1,4 @@
+To Install any one pkg:
+ ansible-playbook installPkgsUsingNodesPKGManagerType.yml -e '{"reqPkg": {"yum": "httpd", "dnf": "httpd", "apt": "apache2" }   }'
+To Install multiple pkgs:
+ ansible-playbook installPkgsUsingNodesPKGManagerType.yml -e '{"reqPkg": {"yum": ["httpd","wget"], "dnf": ["httpd", "curl"], "apt": ["apache2", "vim"] }   }'

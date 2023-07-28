@@ -1,0 +1,16 @@
+--- 
+- hosts: localhost
+  vars:
+    x: 5
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+        msg: 
+          - "x value is: {{x}}" 
+    - ansible.builtin.set_fact: 
+        x: 8
+        y: "ansible playbooks"
+    - ansible.builtin.debug:
+        msg: 
+          - "x value is: {{x}}" 
+          - "y value is: {{y}}" 

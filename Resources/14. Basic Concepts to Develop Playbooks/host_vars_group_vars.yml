@@ -1,0 +1,11 @@
+---
+- hosts: dev
+  gather_facts: false
+  vars:
+    x: 5
+    y: 9
+  tasks:
+    - ansible.builtin.debug: 
+        msg: 
+          - "x value is: {{x}}"
+          - "y value is: {{y}}" 

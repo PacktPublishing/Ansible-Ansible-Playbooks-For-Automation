@@ -1,0 +1,43 @@
+
+work once filter part on setup module and also in plybook with facts 
+
+
+===================================================
+Execute ansible with raw and scripts modules without python
+
+Install required python on managed nodes
+Add more concepts in template for jinja like string opearions comparision etc....
+
+=========================================================
+
+
+
+'{{ "%Y%m%d%H%M.%S" | strftime(stat_var.stat.atime) }}'
+
+add log location
+
+if possible show read_csv module on ansible-core in demo , and then install it from collections or even you can also take aws inventory plugin
+add one section for plugin
+Add dynamic inventroy concept with plugins after ansible community collections
+
+Add a lecture to use ansible node from remote cloud 
+Add a lecture to know the module execution on remote servers
+add a lecture on ansible directory structure once roles are complted
+add a lecture on ansible architecture at the end of the course
+
+raw module and script modules dont need python on managed nodes
+
+aatlast add:
+===========
+Add ansible directory structure 
+and Ansible Architecture
+====================================================
+work with delegat_to and run_once after collections concept with creation multiple users
+
+add one video how to launch server from aws ?
+
+in section 2
+
+
+when two choose two plays in a playbook ?
+  clue: when we need to execute different tasks on different groups/nodes in one playbooks

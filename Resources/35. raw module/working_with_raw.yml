@@ -1,0 +1,10 @@
+--- 
+- name: Using raw module 
+  hosts: test 
+  gather_facts: false 
+  tasks: 
+    - ansible.builtin.raw: 'java -version'
+      register: javaVersion
+    - ansible.builtin.debug:
+        msg: "{{javaVersion}}"  
+

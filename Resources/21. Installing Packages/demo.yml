@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  tasks: 
+    - ansible.builtin.debug:
+        var: myDict
+# ---
+# - name: Play to install packages on different os families 
+#   hosts: dev 
+#   gather_facts: true 
+#   become: yes
+#   tasks: 
+#     - name: Installing packages on RHEL Family 
+#       ansible.builtin.yum:
+#         name: 
+#           - nginx 
+#           - vim
+#           - wget 
+#         state: present
+#         update_cache: true
+#       #become: yes
+#       when: ansible_facts.os_family == "RedHat" 
+#     - name: Installing packages on Debian Family 
+#       ansible.builtin.apt:
+#         name: 
+#           - nginx 
+#           - vim
+#           - wget         
+#         state: present
+#         update_cache: true 
+#       #become: yes     
+#       when: ansible_facts.os_family == "Debian"       

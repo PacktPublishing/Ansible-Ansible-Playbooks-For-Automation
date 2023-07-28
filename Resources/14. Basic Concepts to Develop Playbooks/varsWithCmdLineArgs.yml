@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+        msg: 
+          - "x value is: {{x}}"
+          - "y value is: {{y}}"

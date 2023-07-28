@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  vars:
+    a: 90
+    b: 40
+  gather_facts: false
+  tasks:
+    - ansible.builtin.debug:
+        msg: 
+          - "Inputs are:  a = {{a}} and b = {{b}}"
+          - "a + b = {{a+b}}"
+          - "a - b = {{a-b}}"
+          - "a * b = {{a*b}}"
+          - "a / b = {{a/b}}"
+          - "a // b = {{a//b}}"
+          - "a ** 2 = {{a**2}}"

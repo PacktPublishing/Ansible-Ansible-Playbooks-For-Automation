@@ -1,0 +1,11 @@
+---
+plugin: amazon.aws.aws_ec2
+boto_profile: ansautomation 
+regions:
+  - us-east-1
+  - us-east-2
+leading_separator: False
+keyed_groups:
+  - key: tags.Env
+filters:
+  instance-state-name: running

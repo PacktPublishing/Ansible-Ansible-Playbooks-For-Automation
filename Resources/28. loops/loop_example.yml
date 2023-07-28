@@ -1,0 +1,26 @@
+---
+- name: Play to install a given pkg based on os_family
+  hosts: dev
+  gather_facts: true
+  become: yes
+  vars:
+    reqPkgs:
+      - vim
+      - curl 
+      - wget 
+  tasks:
+    - name: Installing given package using yum
+      ansible.builtin.yum:
+        name: "{{item}}"
+        state: present
+        update_cache: true 
+      loop: "{{reqPkgs}}"
+      when: ansible_facts.os_family == "RedHat"
+    - name: Installing given package using apt
+      ansible.builtin.apt:
+        name: "{{item}}"
+        state: present
+        update_cache: true 
+      loop: "{{reqPkgs}}"
+      when: ansible_facts.os_family == "Debian"      
+      

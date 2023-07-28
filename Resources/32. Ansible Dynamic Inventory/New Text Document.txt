@@ -1,0 +1,8 @@
+pip3 install awscli --user
+
+
+ansible-inventory -i aws_ec2.yml --graph
+
+
+
+ansible aws_ec2 -m ansible.builtin.ping -i aws_ec2.yml

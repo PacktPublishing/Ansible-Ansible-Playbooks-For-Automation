@@ -1,0 +1,19 @@
+---
+- name: Template module usage with Template File with variables, condtiions and loops 
+  hosts: localhost
+  gather_facts: false
+  vars:
+    a: 80
+    b: 70
+    myString: "Ansible Playbooks"
+    myList: 
+      - nginx
+      - vim
+      - wget 
+      - curl
+  tasks:
+    - name: Copying a file from src to dest with template module 
+      ansible.builtin.template:
+        src: template_file_with_variables_conditions_and_loops.j2
+        dest: /tmp/template_file_with_variables_conditions_and_loops.txt
+        

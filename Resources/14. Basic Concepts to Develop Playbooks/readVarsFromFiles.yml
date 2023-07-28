@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  vars_files: 
+    - varsWithYaml.yml
+    - varsWithjson.json
+  gather_facts: false
+  tasks:
+   - ansible.builtin.debug:
+        msg: 
+          - "myVar : {{myVar}}"
+          - "myDict: {{myDict}}"

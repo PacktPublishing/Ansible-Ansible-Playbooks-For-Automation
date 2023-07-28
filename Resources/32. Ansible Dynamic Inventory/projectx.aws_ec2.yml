@@ -1,0 +1,11 @@
+---
+plugin: amazon.aws.aws_ec2
+boto_profile: projectx 
+regions:
+  - us-west-1
+leading_separator: False 
+keyed_groups:
+  - key: tags.Name
+filters:
+  instance-state-name: running
+#use_contrib_script_compatible_sanitization: True
